@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SkillSync - Micro-Mentorship Platform
 
-## Getting Started
+A production-ready skill exchange and mentorship platform built with **React + Django**.
 
-First, run the development server:
+## 🚀 Quick Start
 
+### Backend (Terminal 1)
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd backend
+python -m venv .venv
+.\.venv\Scripts\activate  # Windows
+# source .venv/bin/activate  # Mac/Linux
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py seed_demo
+python manage.py runserver 8000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Frontend (Terminal 2)
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Visit **http://localhost:3000** and login with:
+- **Learner:** alice / password123
+- **Mentor:** sarah_mentor / password123
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📚 Documentation
 
-## Learn More
+- **[QUICKSTART.md](QUICKSTART.md)** - 5-minute setup guide
+- **[README_CONVERSION.md](README_CONVERSION.md)** - Complete documentation with API reference
+- **[FILE_STRUCTURE.md](FILE_STRUCTURE.md)** - Architecture and file descriptions
+- **[FILES_CREATED.md](FILES_CREATED.md)** - Complete file checklist
 
-To learn more about Next.js, take a look at the following resources:
+## 🎯 Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Authentication:** JWT-based with automatic token refresh
+- **User Roles:** Learners and Mentors
+- **Skills System:** Tag-based skill matching
+- **Sessions:** Request, accept, complete workflow
+- **Ratings:** 5-star rating system with reviews
+- **Search:** Filter mentors by skill and availability
+- **Responsive UI:** Bootstrap 5 design
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠️ Tech Stack
 
-## Deploy on Vercel
+### Backend
+- Django 5.0 + Django REST Framework
+- JWT Authentication (djangorestframework-simplejwt)
+- SQLite (dev) / PostgreSQL (production)
+- CORS enabled
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Frontend
+- React 18 (JavaScript)
+- Redux Toolkit for state management
+- React Router v6
+- Bootstrap 5
+- Axios with interceptors
+- Vite (fast build tool)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📁 Project Structure
+
+```
+skillsync/
+├── backend/          # Django REST API
+│   ├── api/         # Main app (models, views, serializers)
+│   └── skill_sync/  # Project settings
+│
+├── frontend/        # React application
+│   └── src/
+│       ├── api/     # Axios configuration
+│       ├── app/     # Redux store
+│       ├── features/# Redux slices
+│       ├── components/
+│       └── pages/
+│
+└── docs/            # Documentation files
+```
+
+## 🧪 Testing
+
+**Backend:**
+```bash
+cd backend
+python manage.py test api
+```
+
+**Frontend:**
+```bash
+cd frontend
+npm run test
+```
+
+## 🐳 Docker (Optional)
+
+See `README_CONVERSION.md` for Docker setup instructions.
+
+## 📄 License
+
+Same license as the original SkillSync project.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+---
+
+**Need help?** Check out the documentation files listed above or open an issue.
