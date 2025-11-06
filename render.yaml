@@ -8,14 +8,12 @@ services:
       pip install -r backend/requirements.txt
       python backend/manage.py collectstatic --noinput
     startCommand: |
-      gunicorn skill_sync.wsgi:application -w 2 -k gthread -b 0.0.0.0:10000
-    postDeployCommand: |
+      gunicorn skill_sync.wsgi:application -w 2 -k gthread -b 0.0.0.0:$PORT
+    postdeploy: |
       python backend/manage.py migrate
     envVars:
       - key: PYTHON_VERSION
         value: 3.11
-      - key: PORT
-        value: 10000
       - key: DEBUG
         value: "False"
       - key: ALLOWED_HOSTS
